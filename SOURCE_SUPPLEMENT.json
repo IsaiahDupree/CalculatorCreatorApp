@@ -1,0 +1,54 @@
+{
+  "supplements_snapshot": "e7c4214d36c2e8b2-r3",
+  "source_roots": [
+    "C:/Users/Isaia/Documents/Coding/CalculatorCreatorApp",
+    "C:/Users/Isaia/Documents/Coding/CalculatorCreatorApp/backend",
+    "C:/Users/Isaia/Documents/Coding/CalculatorCreatorApp/mobile-app"
+  ],
+  "files": {
+    "app/_layout.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\_layout.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/auth/login.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\auth\\login.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/auth/register.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\auth\\register.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/calculator/[id].tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\calculator\\[id].tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/create.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\create.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/embed/[id].tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\embed\\[id].tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/index.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\index.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/subscription.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\app\\subscription.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "components/TutorChat.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\components\\TutorChat.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "context/AuthContext.tsx": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\context\\AuthContext.tsx",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "lib/supabase.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\mobile-app\\lib\\supabase.ts",
+      "reason": "source-bearing directory omitted by generic dependency pruning"
+    }
+  }
+}

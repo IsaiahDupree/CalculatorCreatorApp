@@ -1,0 +1,86 @@
+{
+  "supplements_snapshot": "e7c4214d36c2e8b2-r3",
+  "source_roots": [
+    "C:/Users/Isaia/Documents/Coding/CalculatorCreatorApp",
+    "C:/Users/Isaia/Documents/Coding/CalculatorCreatorApp/backend",
+    "C:/Users/Isaia/Documents/Coding/CalculatorCreatorApp/mobile-app"
+  ],
+  "files": {
+    "__tests__/api.test.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\__tests__\\api.test.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "__tests__/math-engine.test.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\__tests__\\math-engine.test.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/calculators/[id]/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\calculators\\[id]\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/calculators/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\calculators\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/chat/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\chat\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/checkout/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\checkout\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/generate/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\generate\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/run/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\run\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "app/api/webhooks/stripe/route.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\app\\api\\webhooks\\stripe\\route.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "jest.config.js": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\jest.config.js",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "lib/ai-service.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\lib\\ai-service.ts",
+      "reason": "source-bearing directory omitted by generic dependency pruning"
+    },
+    "lib/calc-spec.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\lib\\calc-spec.ts",
+      "reason": "source-bearing directory omitted by generic dependency pruning"
+    },
+    "lib/math-engine.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\lib\\math-engine.ts",
+      "reason": "source-bearing directory omitted by generic dependency pruning"
+    },
+    "lib/stripe.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\lib\\stripe.ts",
+      "reason": "source-bearing directory omitted by generic dependency pruning"
+    },
+    "lib/supabase.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\lib\\supabase.ts",
+      "reason": "source-bearing directory omitted by generic dependency pruning"
+    },
+    "middleware.ts": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\middleware.ts",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "supabase/migrations/20251126000000_create_calculators.sql": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\supabase\\migrations\\20251126000000_create_calculators.sql",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "supabase/migrations/20251127000000_add_auth_and_ownership.sql": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\supabase\\migrations\\20251127000000_add_auth_and_ownership.sql",
+      "reason": "portable authored code absent from staged source selection"
+    },
+    "supabase/migrations/20251127000001_add_profiles_and_subscriptions.sql": {
+      "source": "C:\\Users\\Isaia\\Documents\\Coding\\CalculatorCreatorApp\\backend\\supabase\\migrations\\20251127000001_add_profiles_and_subscriptions.sql",
+      "reason": "portable authored code absent from staged source selection"
+    }
+  }
+}

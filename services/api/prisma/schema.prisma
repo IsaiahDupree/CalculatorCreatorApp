@@ -1,0 +1,230 @@
+// Prisma schema for Calculator Creator App
+// Database: PostgreSQL (Supabase)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  username          String?  @unique
+  name              String?
+  avatar            String?
+  bio               String?
+  verified          Boolean  @default(false)
+  
+  // Subscription
+  subscriptionTier  String   @default("free") // free, pro, business
+  subscriptionId    String?  // Stripe subscription ID
+  subscriptionStatus String? // active, canceled, past_due
+  
+  // Gamification
+  xp                Int      @default(0)
+  level             Int      @default(1)
+  badges            String[] @default([])
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  calculators       Calculator[]
+  ideas             Idea[]
+  runs              CalculatorRun[]
+  feedback          Feedback[]
+  earnings          Earnings[]
+  tutoringSessions  TutoringSession[]
+  
+  @@index([email])
+  @@index([subscriptionTier])
+}
+
+model Calculator {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  summary       String?
+  category      String?
+  tags          String[]
+  
+  // Spec (JSON)
+  spec          Json     // CalculatorSpec JSON
+  
+  // Status
+  status        String   @default("draft") // draft, pending, approved, published, archived
+  reviewStatus  String?  // pending, approved, rejected
+  reviewNotes   String?
+  
+  // Attribution
+  creatorId     String
+  creator       User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  
+  // Versioning
+  version       Int      @default(1)
+  parentId      String?  // For versioning
+  
+  // Physics Vetting
+  physicsVetted Boolean  @default(false)
+  vettingChecks Json?    // Array of check results
+  
+  // Analytics
+  viewCount     Int      @default(0)
+  runCount      Int      @default(0)
+  shareCount    Int      @default(0)
+  favoriteCount Int     @default(0)
+  
+  // Ranking
+  trendingScore Float   @default(0)
+  qualityScore  Float   @default(0)
+  
+  // SEO
+  seoTitle      String?
+  seoDescription String?
+  
+  // Timestamps
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  publishedAt   DateTime?
+  
+  // Relations
+  versions      CalculatorVersion[]
+  runs          CalculatorRun[]
+  feedback      Feedback[]
+  examples      CalculatorExample[]
+  
+  @@index([status])
+  @@index([category])
+  @@index([creatorId])
+  @@index([trendingScore])
+  @@index([createdAt])
+  // @@fulltext([title, summary]) // Fulltext indexes not supported in PostgreSQL without extensions
+}
+
+model CalculatorVersion {
+  id            String   @id @default(cuid())
+  calculatorId  String
+  calculator    Calculator @relation(fields: [calculatorId], references: [id], onDelete: Cascade)
+  version       Int
+  spec          Json
+  changelog     String?
+  createdAt     DateTime @default(now())
+  
+  @@unique([calculatorId, version])
+  @@index([calculatorId])
+}
+
+model Idea {
+  id            String   @id @default(cuid())
+  prompt        String
+  imageUrl      String?  // If from photo
+  status        String   @default("submitted") // submitted, vetting, approved, rejected, generated
+  vettingResult Json?    // AI vetting analysis
+  calculatorId  String?  // If generated
+  creatorId     String
+  creator       User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  
+  @@index([status])
+  @@index([creatorId])
+}
+
+model CalculatorRun {
+  id            String   @id @default(cuid())
+  calculatorId  String
+  calculator    Calculator @relation(fields: [calculatorId], references: [id], onDelete: Cascade)
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  inputs        Json
+  outputs       Json
+  duration      Int?     // milliseconds
+  success       Boolean  @default(true)
+  error         String?
+  
+  createdAt     DateTime @default(now())
+  
+  @@index([calculatorId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model Feedback {
+  id            String   @id @default(cuid())
+  calculatorId  String
+  calculator    Calculator @relation(fields: [calculatorId], references: [id], onDelete: Cascade)
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  rating        Int      // 1-5
+  comment       String?
+  helpful       Boolean?
+  
+  createdAt     DateTime @default(now())
+  
+  @@unique([calculatorId, userId])
+  @@index([calculatorId])
+  @@index([userId])
+}
+
+model CalculatorExample {
+  id            String   @id @default(cuid())
+  calculatorId  String
+  calculator    Calculator @relation(fields: [calculatorId], references: [id], onDelete: Cascade)
+  inputs        Json
+  outputs        Json
+  description   String?
+  
+  @@index([calculatorId])
+}
+
+model Earnings {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  period        String   // "2024-01"
+  calculatorId  String?
+  amount        Decimal  @db.Decimal(10, 2) // Revenue share amount
+  usageCount    Int      // Calculator runs attributed
+  
+  createdAt     DateTime @default(now())
+  
+  @@unique([userId, period])
+  @@index([userId])
+  @@index([period])
+}
+
+model Subscription {
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  stripeId            String   @unique
+  tier                String
+  status              String
+  currentPeriodEnd    DateTime?
+  cancelAtPeriodEnd   Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([stripeId])
+}
+
+model TutoringSession {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  calculatorId  String
+  messages      Json     // Chat messages
+  startedAt     DateTime @default(now())
+  endedAt       DateTime?
+  
+  @@index([userId])
+  @@index([calculatorId])
+}
+

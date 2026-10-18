@@ -1,0 +1,26 @@
+# Simple Supabase - Just Postgres for Development
+# No analytics, no extra services - just the database
+# Uses unique port 54321 to avoid conflicts
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: calc-creator-db
+    restart: unless-stopped
+    ports:
+      - "54321:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:
+

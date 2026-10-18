@@ -1,0 +1,32 @@
+
+> backend@0.1.0 test
+> jest api.test.ts
+
+FAIL __tests__/api.test.ts
+  API Integration Tests
+    POST /api/run
+      ├ù calculates results correctly (9 ms)
+      ΓêÜ returns 400 for invalid inputs (1 ms)
+
+  ΓùÅ API Integration Tests ΓÇ║ POST /api/run ΓÇ║ calculates results correctly
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 400
+
+      25 |             const data = await res.json();
+      26 |
+    > 27 |             expect(res.status).toBe(200);
+         |                                ^
+      28 |             expect(data).toEqual({ outputs: { sum: 15 } });
+      29 |         });
+      30 |
+
+      at Object.<anonymous> (__tests__/api.test.ts:27:32)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+Time:        0.995 s, estimated 1 s
+Ran all test suites matching api.test.ts.
